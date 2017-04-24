@@ -9,9 +9,29 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Sign Up</title>
     </head>
-    <body>
-        <h1>Hello World!</h1>
+    <body style="text-align: center">
+        <div id="header">
+             <a href ="../index.jsp"><img src="../image/logo.gif" alt = "logo"></a>
+        </div>
+        <div id="dosignup" style="margin: 0 auto; width: 330px">
+            <font>Please fill in the user name and password:</font><br/><br/>
+            
+            <form name="SignUpForm" action="dosignup.jsp" method="POST">
+                <%
+                    String username = "";
+                    if(request.getAttribute("username")!= null && request.getAttribute("username")!= ""&& request.getAttribute("username")!= "null"){
+                        username = (String)request.getAttribute("username");
+                    }
+                    out.println("Create an Username: <input type='text' name='username' value= '"+username+"' maxlength ='15'/><br/>");
+                    if(request.getAttribute("error") != null){
+                        out.println(request.getAttribute("error"));
+                    }
+                    %>
+                    <br/>Create a Password: <input type='password' name='password' value='' maxlength ='16'/><br/>
+                    <br/>Confirm your Password: <input type='password' name='password_c' value='' maxlength ='16'/><br/>
+                    <br/><input type="submit" value="Sign Up"/>
+            </form>
     </body>
 </html>

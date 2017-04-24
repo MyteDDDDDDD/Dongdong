@@ -34,6 +34,7 @@
                 %><br/>
                 
                 <input type="submit" value="Login"/>
+                <a href="signup.jsp"><font>Sign Up Now!</font></a>
             </form>
         </div>
         

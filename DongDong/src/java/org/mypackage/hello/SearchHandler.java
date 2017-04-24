@@ -29,7 +29,10 @@ public class SearchHandler {
      * @param search_info the search_info to set
      */
     public void setSearch_info(String search_info) {
-        
+       if(search_info == null || search_info.equalsIgnoreCase("")){
+           search_info = " ";
+       }
+       
         this.search_info = search_info;
     }
 
