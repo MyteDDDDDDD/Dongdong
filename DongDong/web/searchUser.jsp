@@ -17,11 +17,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+    <link href="./css/index_style.css" rel="stylesheet" />
     </head>
     <body>
+        <jsp:include page="header1.jsp" flush="true"/>
         <jsp:useBean id="myUsers" class ="org.mypackage.hello.Users"></jsp:useBean>
         <%
-            
+            String username;
             String inputUsername =request.getParameter("searchName");
             boolean ifFind=false;
             int userRole = 0;
@@ -36,7 +38,7 @@
             Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = stmt.executeQuery("SELECT * FROM login_tb ORDER BY username ASC");
             while (rs != null && rs.next() != false) {
-                String username = rs.getString("username");
+                username = rs.getString("username");
                 
                 if(inputUsername.equals(username)){
                     userRole = rs.getInt("role");
@@ -84,7 +86,7 @@
         </p>
         
         <form action="loyPointsChange.jsp" method="POST">
-            <input type="hidden" name="userid" value="<%=request.getParameter("searchName") %>" />
+            <input type="hidden" name="userid" value="<%= request.getParameter("searchName") %>" />
             <input type="hidden" name="changeType" value="0">
             
             <input type="text" name="addPoints" value="0" >
@@ -109,6 +111,6 @@
         <%
             }
         %>
-        
+        <jsp:include page="footer.jsp" flush="true"/>
     </body>
 </html>

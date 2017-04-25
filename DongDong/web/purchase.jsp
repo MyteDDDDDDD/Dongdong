@@ -9,7 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Purchase</title>
+        <link href="./css/index_style.css" rel="stylesheet" />
     </head>
     <body>
        <jsp:include page="header1.jsp" flush="true"/>
@@ -24,13 +25,14 @@
           %>
           Total Price:
           <%=sum%>
-           <form action="" method="POST">
+           <form action="addTransaction.jsp" method="POST">
+                <input name="loyPoints" type="hidden" value="<%= Float.parseFloat(request.getParameter("loyPoints"))%>">
                 Credit Card Number
-                <input type="text" value="">
+                <input name="cdNumber" type="text" value="">
                 Credit Card Safety Code
-                <input type="text" value="">
+                <input name="cdSafetyCode" type="text" value="">
                 Delivery address
-                <input type="text" value="">
+                <input type="text" name="location" value="">
                 <input type="submit" value="Pay now" >
             </form>
        </p>

@@ -10,12 +10,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sign Up</title>
+       <link href="<%=request.getContextPath()%>/css/index_style.css" rel="stylesheet" />
     </head>
-    <body style="text-align: center">
-        <div id="header">
-             <a href ="../index.jsp"><img src="../image/logo.gif" alt = "logo"></a>
-        </div>
+    <body>
+        <jsp:include page="..\header1.jsp" flush="true"/>
         <div id="dosignup" style="margin: 0 auto; width: 330px">
+            <br>
             <font>Please fill in the user name and password:</font><br/><br/>
             
             <form name="SignUpForm" action="dosignup.jsp" method="POST">
@@ -33,5 +33,8 @@
                     <br/>Confirm your Password: <input type='password' name='password_c' value='' maxlength ='16'/><br/>
                     <br/><input type="submit" value="Sign Up"/>
             </form>
+                    </div>
+                    
+                    <jsp:include page="..\footer.jsp" flush="true"/>
     </body>
 </html>

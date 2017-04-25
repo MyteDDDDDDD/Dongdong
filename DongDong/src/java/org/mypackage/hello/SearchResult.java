@@ -38,7 +38,7 @@ public class SearchResult {
      */
     public String getImgUrl() {
         String url;
-        url = "./image/"+imgName;
+        url = imgName;
         
         return url;
     }

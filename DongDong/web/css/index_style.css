@@ -25,6 +25,13 @@ font.shopCart_font{
     border: 2px;
 }
 
+#body{
+    
+    margin: 0 auto;
+    width: 1000px;
+    border: 5px;
+}
+
 #header{
     margin: 0 auto;
     width: 1000px;

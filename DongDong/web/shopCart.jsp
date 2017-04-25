@@ -16,7 +16,7 @@
     <body>
        <jsp:include page="header1.jsp" flush="true"/>
         <jsp:useBean id="cart" scope="session" class="org.mypackage.hello.ShopCart" />
-        <div>
+        <div id="div_result">
             <%  
                 if(request.getParameter("remove")!=null){
              
@@ -27,23 +27,27 @@
                 if(cart.getCommoditiesSize()>0){
                 float sum=0 ;
             
-                for(int i=0;i<cart.getCommoditiesSize();i++){
+                
             %>
-            <table>
+            <br>
+            
+            <table id="shopcart">
+                <%for(int i=0;i<cart.getCommoditiesSize();i++){%>
                 <tr>
-                    <td>
+                    
+                    <td style="border: 1px solid #a1a1a1">
                         Book Title :
                         <%=cart.getCommodity(i).getName()%>
                     </td>
-                    <td>
+                    <td style="border: 1px solid #a1a1a1">
                         Unit Price ：
                         <%=cart.getCommodity(i).getPrice()%>
                     </td>
-                    <td>
+                    <td style="border: 1px solid #a1a1a1">
                         Number :
                         <%=cart.getCommodity(i).getNumber()%>
                     </td>
-                    <td>
+                    <td style="border: 1px solid #a1a1a1">
                         Total Price:
                         <%=cart.getCommodity(i).getNumber()*cart.getCommodity(i).getPrice()%>
                         
@@ -56,11 +60,13 @@
                         </form>
                     </td>
                 </tr>
-            </table>
-            <%
+                <%
                 sum+=cart.getCommodity(i).getNumber()*cart.getCommodity(i).getPrice();
                }
             %>
+            </table>
+            
+            
             <div>
                 Total Price:
                 <%="$"+sum
@@ -71,7 +77,8 @@
             %>
             
         </div>
-        <div>
+            <div id="div_result">
+                <br>
             <%
            if(session.getAttribute("logined")== null || session.getAttribute("logined")=="false" ){
             %>
@@ -89,7 +96,7 @@
             <%
                 }
             %>
-          
+          <br>
             <form action="index.jsp" method="POST">
                     <input type="submit" value="Go Back To Home Page" >
             </form>

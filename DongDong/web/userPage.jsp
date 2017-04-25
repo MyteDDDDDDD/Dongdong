@@ -13,18 +13,13 @@
         <link href="./css/index_style.css" rel="stylesheet" />
     </head>
     <body>
-        
-        <jsp:include page="header1.jsp" flush="true"/>
+          <jsp:include page="header1.jsp" flush="true"/>
           <h1>
-              Hello,
+              Hello
               <%=session.getAttribute("username") %>
           </h1>
         <p>User Name:
             <%= session.getAttribute("username")
-        %>
-        </p>
-        <p>Role:
-            <%= session.getAttribute("role")
         %>
         </p>
       
@@ -37,7 +32,7 @@
         %>
         </p>
         
-        <form action="checkTransactions.jsp" method="POST">
+        <form action="checkTransaction.jsp" method="POST">
             <input type="hidden" name="userid" value="<%=session.getAttribute("username") %>" />
             <input type="submit" value="Check Recent Transactions" >
         </form>
@@ -51,9 +46,12 @@
             <input type="text" name="searchName" value=""/>
             <input type="submit" value="Search User" >
         </form>
-        
+        <br>
         <form action="checkRefund.jsp" method="POST">
             <input type="submit" value="Check Refund" >
+        </form>
+        <form action="checkBook.jsp" method="POST">
+            <input type="submit" value="Check Book" >
         </form>
         <%
             }

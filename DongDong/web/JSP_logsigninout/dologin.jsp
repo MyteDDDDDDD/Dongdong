@@ -17,12 +17,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Do login</title>
+        <link href="<%=request.getContextPath()%>/css/index_style.css" rel="stylesheet" />
     </head>
     <body style="text-align: center">
-        <div id="header">
-             <a href ="../index.jsp"><img src="../image/logo.gif" alt = "logo"></a>
-        </div>
-        <div id="result" style="margin: 0 auto; width: 300px">
+        
+       
         <jsp:useBean id="myUsers" class ="org.mypackage.hello.Users"></jsp:useBean>
         <jsp:setProperty property="*" name="myUsers"/>
         <%
@@ -99,8 +98,12 @@
             
             }
         %>
+        <jsp:include page="..\header1.jsp" flush="true"/>
+         <div id="result" style="margin: 0 auto; width: 300px">
         <h2>Login Success!</h2>
         <a  href="../index.jsp"><img style="width: 50px; height: 50px" src="../image/back.jpg" alt="Back"/></a>
         </div>
+        
+         <jsp:include page="..\footer.jsp" flush="true"/>
     </body>
 </html>

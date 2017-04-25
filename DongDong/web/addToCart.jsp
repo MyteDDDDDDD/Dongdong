@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>add to cart</title>
         <link href="./css/search_style.css" rel="stylesheet" />
     </head>
     
@@ -21,9 +21,10 @@
            mybean.setPrice(Float.parseFloat(request.getParameter("price").substring(1)));
            mybean.setName(request.getParameter("name"));
            mybean.setNumber(Integer.parseInt(request.getParameter("number")));
+           mybean.setEbook(Integer.parseInt(request.getParameter("ebook")));
            cart.addCommodity(mybean);
             %>
-            
+            <div id="div_result">            
         <h1>
            <%= mybean.getName() %>
            
@@ -39,6 +40,8 @@
                 <form action="shopCart.jsp" method="POST">
                     <input type="submit" value="Go To Shop Cart" >
                 </form>
+                
+
                 <form action="index.jsp" method="POST">
                     <input type="submit" value="Go Back To Home Page" >
                 </form>
@@ -48,7 +51,7 @@
             
             
         </h2>
-        
+</div>
         
        <jsp:include page="footer.jsp" flush="true"/>
         

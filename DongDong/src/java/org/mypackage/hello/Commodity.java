@@ -13,10 +13,18 @@ public class Commodity {
     private String name;
     private int number;
     private float price;
+    private int ebook;
     
     public Commodity(){
     }
     
+    public void setEbook(int e){
+        this.ebook=e;
+    }
+    
+    public int getEbook(){
+        return ebook;
+    }
     public void setName(String name){
         this.name=name;
     }

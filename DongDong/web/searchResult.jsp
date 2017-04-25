@@ -106,19 +106,30 @@
             <table id="wholeResultTable">
                 <tr>
                     <td>
-                        <a href ="index.jsp"><img class="reslut_img" src="<%=sr[i].getImgUrl()%>" alt = "<%=sr[i].getTitle()%>"></a>
+                        <a href ="index.jsp"><img class="reslut_img" src="./image/<%=sr[i].getImgUrl()%>" alt = "<%=sr[i].getTitle()%>"></a>
                     </td>
                     <td valign="top">
                         <table id="table_result">
                             <tr>
                                 <td class="text_title">
-                                <a href="./JSP_ProductPage/userProductPage.jsp"><%=sr[i].getTitle()%></a>
+                                <form action="./JSP_ProductPage/userProductPage.jsp" method="POST">
+                            
+                                <input type="hidden" name="bname" value="<%=sr[i].getTitle()%>">
+                                <input type="hidden" name="imgUrl" value="<%=sr[i].getImgUrl()%>">
+                                <input type="hidden" name="price" value="<%=sr[i].getPrice() %>">
+                                <input type="hidden" name="author" value="<%=sr[i].getAuthor() %>">
+                                <input type="hidden" name="publisher" value="<%=sr[i].getPublisher() %>">
+                                <input type="hidden" name="introduce" value="<%=sr[i].getIntroduce() %>">
+
+                                <input type="submit" value="<%=sr[i].getTitle()%>" >
+                                 </form>
+                                
                                 </td>
                                 <%
                                 if(session.getAttribute("logined")!= null && session.getAttribute("role").equals(0)){
                                 %>
                                 <td class="text_title">
-                                    <a href="./JSP_ProductPage/adminProductPage.jsp">Edit</a>
+                                    <a href="checkBook.jsp">Edit</a>
                                 </td>
                                 <%
                                 }
@@ -134,16 +145,7 @@
                                 <%=sr[i].getAuthor()%>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                <%=sr[i].getPublisher()%>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                <%=sr[i].getIntroduce()%>
-                                </td>
-                            </tr>
+                            
                             <tr valign="bottom">
                                 <td >
                                     <jsp:useBean id="cart" scope="session" class="org.mypackage.hello.ShopCart" />
@@ -151,6 +153,7 @@
                                     
                                   
                                     <form action="addToCart.jsp" method="POST">
+                                        <input type="hidden" name="ebook" value="<%=sr[i].getType()%>" />
                                         <input type="hidden" name="price" value="<%=sr[i].getPrice()%>" />
                                         <input type="hidden" name="name" value="<%=sr[i].getTitle()%>" />
                                         <input type="text" name="number"value="1"/>
@@ -177,7 +180,7 @@
             }
             else{
             %>
-            <h5>Invalid Search! Try again.</h5>
+            <h5 style="text-align: center">Invalid Search! Try again.</h5>
             <%
             }
             

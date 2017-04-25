@@ -1,11 +1,10 @@
 <%-- 
-    Document   : checkRefund
-    Created on : Apr 24, 2017, 9:14:39 PM
+    Document   : checkBook
+    Created on : Apr 24, 2017, 9:15:19 PM
     Author     : zichuyuan2
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <%@page import="javax.naming.Context, javax.naming.InitialContext" %>
 <%@page import="java.lang.String, java.lang.StringBuffer" %>
 <%@page import="javax.naming.Context, javax.naming.InitialContext" %>
@@ -17,6 +16,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link href="./css/index_style.css" rel="stylesheet" />
     </head>
     <body>
         <jsp:include page="header1.jsp" flush="true"/>
@@ -29,57 +29,39 @@
             Connection con = ds.getConnection();
 
             Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ResultSet rs = stmt.executeQuery("SELECT * FROM refund ORDER BY rid ASC");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM book ORDER BY b_name ASC");
             while (rs != null && rs.next() != false) {
                
         %>
         <tr>
-            <td>Refund ID:
-                <%= rs.getString("rid") %>
-            </td>
-            <td>User Name:
-                <%= rs.getString("username") %>
+            <td>Book ID:
+                <%= rs.getString("bid") %>
             </td>
             <td>Book Name:
-                <%= rs.getString("bname") %>
+                <%= rs.getString("b_name") %>
             </td>
-            <td>Price
-                <%= rs.getString("price") %>
+            <td>Author:
+                <%= rs.getString("b_author") %>
             </td>
-            <td>Amount
-                <%= rs.getString("amount") %>
-            </td>
-            <td>Delivery Location
-                <%= rs.getString("location") %>
-            </td>
-            <td>Credit Card
-                <%= rs.getString("cdnumber") %>
-            </td>
-            <td>Purchase Date:
-                <%= rs.getString("date") %>
-            </td>
-            <td>Authorize Status:
-                <%= rs.getString("status") %>
-            </td>
-            <td>
-                <%if(rs.getString("status").equals("0")){
-                %>
-                <form action="manageRefund.jsp" method="POST">
-                    <input type="hidden" name="rid" value="<%=rs.getString("rid")%>" >
-                    <input type="hidden" name="authorize" value="reject">
-                    <input type="submit" value="Reject" >
-                </form>
-                <form action="manageRefund.jsp" method="POST">
-                    <input type="hidden" name="rid" value="<%=rs.getString("rid")%>" >
-                    <input type="hidden" name="authorize" value="accept">
-                    <input type="submit" value="Accept" >
+            <td>Price:
+                <form action="manageBook.jsp" method="POST">
+                    <input type="hidden" name="bid" value="<%=rs.getString("bid")%>" >
+                    <input type="text" name="price"value="<%=rs.getString("b_price")%>">
+                    <input type="submit" value="Change Price" >
                 </form>
             </td>
-                <%
-                }
-                %>
-            
-        </tr>
+            <td>Publisher:
+                <%= rs.getString("b_pulisher") %>
+            </td>
+            <td>Quality:
+                <form action="manageBook.jsp" method="POST">
+                    <input type="hidden" name="bid" value="<%=rs.getString("bid")%>" >
+                    <input type="text" name="quality" value="<%=rs.getString("b_stock")%>">
+                    <input type="submit" value="Change Stock" >
+                </form>
+            </td>
+           
+        </tr>    
         <%
             }
                 if (rs != null) {

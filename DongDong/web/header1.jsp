@@ -1,4 +1,5 @@
 <div id="header">
+    
             <div id="login">
                 <%
                     if(session.getAttribute("logined")!= null && session.getAttribute("logined").equals(true)){
@@ -19,14 +20,15 @@
                     </th>
                     <th>
                         
-                        <form name='Search Form' action="searchResult.jsp" method='POST'>
+                        <form name='Search Form' action="<%=request.getContextPath()%>/searchResult.jsp" method='POST'>
                         <input type='text' name='search_info' />
                         <input type='submit' value='Search' />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
                         </form>
                     </th>
+                    <%if(session.getAttribute("logined")== null || session.getAttribute("role").equals(1)){%>
                     <div id ="shoppingCart">
                         <th>
-                            <a href ="shopCart.jsp">
+                            <a href ="<%=request.getContextPath()%>/shopCart.jsp">
                                 <img width ="60" height ="60" src="<%=request.getContextPath()%>/image/shopCartIcon.jpg" alt = "shopCart">
                                 <jsp:useBean id="cart" scope="session" class="org.mypackage.hello.ShopCart" />
                                 </a>
@@ -34,6 +36,7 @@
                         <th ><font class = "shopCart_font">Shopping Cart: <%=cart.getAmount()%></font></th>
                         
                     </div>
+                        <%}%>
                 </tr>
             </table>
                  <hr width="1000px" color="#d7d7d7" SIZE=1>
